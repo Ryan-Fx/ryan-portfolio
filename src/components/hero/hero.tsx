@@ -1,0 +1,20 @@
+"use client";
+import { motion } from "framer-motion";
+import Introduce from "./introduce";
+import MaskedDivHero from "./masked-div-hero";
+
+export default function Hero() {
+  return (
+    <section id="home" className="scroll-mt-100">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+        className="md:flex space-y-4 md:space-y-0 md:space-x-4 justify-center items-center gap-4"
+      >
+        <Introduce />
+        <MaskedDivHero />
+      </motion.div>
+    </section>
+  );
+}
