@@ -21,7 +21,7 @@ export default function NavBar() {
         </div>
       </div>
       {/* dark mode */}
-      <div className="hidden md:flex pr-8 absolute top-14 right-0">
+      <div className="hidden md:flex pr-8 absolute top-6 right-0">
         <ModeToggle />
       </div>
     </div>
