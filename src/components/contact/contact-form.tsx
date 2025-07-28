@@ -48,7 +48,7 @@ export default function ContactForm() {
   return (
     <div className="col-span-3">
       <motion.div
-        variants={fadeIn("up")}
+        variants={fadeIn("left")}
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.2 }}
