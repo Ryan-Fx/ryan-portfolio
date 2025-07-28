@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Karla, Nanum_Pen_Script } from "next/font/google";
+import { Inter, Karla, Nanum_Pen_Script } from "next/font/google";
 import React from "react";
 
 const karla = Karla({
@@ -7,23 +7,29 @@ const karla = Karla({
   weight: ["400", "600", "700"],
 });
 
-const nanum = Nanum_Pen_Script({
+// const nanum = Nanum_Pen_Script({
+//   subsets: ["latin"],
+//   weight: ["400"],
+// });
+
+export const inter = Inter({
   subsets: ["latin"],
-  weight: ["400"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export default function AboutText() {
   return (
-    <div className="md:w-1/2 p-5 lg:py-28 rounded-md relative overflow-hidden border border-pink-300">
-      <div className="bg-linear-to-l from-blue-200 via-blue-500 to-blue-200 dark:from-blue-400 dark:via-blue-500 dark:to-blue-700" />
+    <div className="md:w-1/2 p-5 lg:py-28">
+      {/* <div className="bg-linear-to-l from-blue-200 via-blue-500 to-blue-200 dark:from-blue-400 dark:via-blue-500 dark:to-blue-700" /> */}
       <p
         className={cn(
           "text-lg md:text-xl text-muted-foreground tracking-wider",
-          karla.className
+          inter.className
         )}
       >
         A passionate web developer{" "}
-        <span className={cn("text-rose-400 text-xl", nanum.className)}>
+        <span className={cn("text-rose-400 text-xl", karla.className)}>
           (Junior developer for now)
         </span>
         , love to learn new things for the web. Try to enhance user interface to
