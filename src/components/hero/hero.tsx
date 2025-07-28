@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Introduce from "./introduce";
 import MaskedDivHero from "./masked-div-hero";
+import HeroSpline from "./hero-spline";
 
 export default function Hero() {
   return (
@@ -13,7 +14,8 @@ export default function Hero() {
         className="md:flex space-y-4 md:space-y-0 md:space-x-4 justify-center items-center gap-4"
       >
         <Introduce />
-        <MaskedDivHero />
+        {/* <MaskedDivHero /> */}
+        <HeroSpline />
       </motion.div>
     </section>
   );
