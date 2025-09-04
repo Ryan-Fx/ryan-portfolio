@@ -73,7 +73,7 @@ const skillsDataBackend = [
 export default function SkillsSlider() {
   return (
     <>
-      <InfiniteSlider gap={40} speed={120} speedOnHover={50}>
+      <InfiniteSlider gap={40} speed={120} speedOnHover={60}>
         {[
           ...skillsDataFrontend,
           ...skillsDataFrontend,
@@ -85,7 +85,7 @@ export default function SkillsSlider() {
           </div>
         ))}
       </InfiniteSlider>
-      <InfiniteSlider gap={50} speed={50} speedOnHover={20} reverse>
+      <InfiniteSlider gap={50} speed={100} speedOnHover={60}>
         {[
           ...skillsDataBackend,
           ...skillsDataBackend,
