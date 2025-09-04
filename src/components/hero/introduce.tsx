@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Karla } from "next/font/google";
+import { Inter, Karla } from "next/font/google";
 import Link from "next/link";
 import { easeInOut, motion } from "framer-motion";
 import {
@@ -20,6 +20,12 @@ import { TypeAnimation } from "react-type-animation";
 const karla = Karla({
   subsets: ["latin"],
   weight: ["400", "500", "600", "800"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 const words =
@@ -68,8 +74,8 @@ export default function Introduce() {
           words={words}
           duration={0.5}
           className={cn(
-            "text-lg lg:text-2xl font-medium text-muted-foreground tracking-wider",
-            karla.className
+            "text-lg lg:text-3xl font-medium text-muted-foreground tracking-wider",
+            inter.className
           )}
         />
         ;

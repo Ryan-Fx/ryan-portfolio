@@ -54,7 +54,7 @@ const containerVariants = {
 
 export function Projects() {
   return (
-    <section id="projects" className="scroll-mt-36 mt-28">
+    <section id="projects" className="scroll-mt-36 mt-32">
       <div>
         <h2 className="text-4xl font-extrabold mb-12 text-center tracking-wide">
           My Futuristic Projects

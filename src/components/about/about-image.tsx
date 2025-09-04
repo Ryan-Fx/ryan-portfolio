@@ -20,7 +20,7 @@ export default function AboutImage() {
           width={350}
           height={350}
           alt="Picture of the author"
-          className="rounded-lg transition duration-1000 grayscale hover:grayscale-0 cursor-pointer"
+          className=" rounded-bl-[220px] rounded-br-[220px] transition duration-1000 grayscale hover:grayscale-0 cursor-pointer"
         />
       </motion.div>
     </div>

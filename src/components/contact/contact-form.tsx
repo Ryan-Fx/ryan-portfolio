@@ -46,19 +46,19 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="col-span-3">
+    <div className="col-span-4">
       <motion.div
         variants={fadeIn("left")}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.2 }}
-        className={cn("col-span-4 z-10", poppins.className)}
+        viewport={{ once: false, amount: 0.3 }}
+        className={cn("col-span-4", poppins.className)}
       >
         {" "}
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 lg:text-2xl"
+            className="space-y-5 lg:text-2xl"
           >
             <FormField
               control={form.control}
@@ -104,8 +104,8 @@ export default function ContactForm() {
                   <FormLabel>Message</FormLabel>
                   <FormControl>
                     <Textarea
-                      rows={10}
-                      className="ring-2 ring-cyan-500 resize-none"
+                      rows={20}
+                      className="ring-2 ring-cyan-500 resize-none min-h-[200px]"
                       placeholder="Let's talk about..."
                       {...field}
                     />
