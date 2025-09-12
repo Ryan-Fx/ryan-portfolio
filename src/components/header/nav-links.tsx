@@ -15,7 +15,7 @@ export default function NavLinks() {
   const [active, setActive] = useState("Home");
 
   return (
-    <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 text-center">
+    <div className="flex space-x-2 text-center">
       {links.map((link) => (
         <Link
           key={link.name}

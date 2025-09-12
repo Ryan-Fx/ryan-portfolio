@@ -22,7 +22,7 @@ export function fadeIn(
       y: 0,
       transition: {
         type: "tween",
-        duration: 1,
+        duration: 1.5,
         delay,
         ease: [0.25, 0.25, 0.25, 0.75],
       },

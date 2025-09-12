@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ProjectCard } from "./project-card";
+import { fadeIn } from "@/lib/variants";
+import { tr } from "zod/v4/locales";
 
 const projectsData = [
   {
@@ -61,11 +63,11 @@ export function Projects() {
         </h2>
 
         <motion.div
-          className="flex flex-wrap justify-center gap-8"
-          variants={containerVariants}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          variants={fadeIn("up", 0.3)}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.8 }}
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.3 }}
         >
           {projectsData.map((project) => (
             <ProjectCard key={project.id} project={project} />

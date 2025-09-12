@@ -7,7 +7,7 @@ import NavLinks from "./nav-links";
 
 export default function NavBar() {
   return (
-    <div className="pt-10 relative">
+    <div className="pt-10 relative hidden md:flex">
       <div className="w-full flex justify-center">
         <div className="">
           <motion.div

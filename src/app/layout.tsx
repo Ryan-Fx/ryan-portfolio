@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header/header";
 import Squares from "@/components/Squares/Squares";
 import { BackgroundSquares } from "@/components/bg-squares";
+import Footer from "@/components/footer/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
           <ScrollProgress />
           <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
