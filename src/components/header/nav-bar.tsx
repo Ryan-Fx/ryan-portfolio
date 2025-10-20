@@ -4,6 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ModeToggle } from "../mode-toggle";
 import NavLinks from "./nav-links";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function NavBar() {
   return (
@@ -22,7 +25,17 @@ export default function NavBar() {
       </div>
       {/* dark mode */}
       <div className="hidden md:flex pr-8 absolute top-6 right-0">
-        <ModeToggle />
+        <div className="flex space-x-4">
+          <div className="flex items-center">
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
+          <ModeToggle />
+          <Button asChild variant="ghost">
+            <Link href="/message">Inbox!</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

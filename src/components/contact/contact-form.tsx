@@ -12,28 +12,27 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
+import { MessageInput, messageSchema } from "@/schema/messages";
+import { useTransition } from "react";
+import { createMessage } from "@/actions/messages";
+import toast from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600"],
 });
 
-const FormSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().min(1, "Email is required").email("Invalid email"),
-  message: z.string().min(1, "Message is required"),
-});
-
 export default function ContactForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const [isPending, startTransition] = useTransition();
+
+  const form = useForm<MessageInput>({
+    resolver: zodResolver(messageSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -41,12 +40,21 @@ export default function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof FormSchema>) {
-    console.log(values);
-  }
+  const onSubmit = (values: MessageInput) => {
+    startTransition(async () => {
+      try {
+        await createMessage(values);
+        toast.success("Your message was sent successfully!");
+        form.reset();
+      } catch (error: any) {
+        toast.error("Something went wrong, please try again!");
+        console.error("Failed to send message:", error);
+      }
+    });
+  };
 
   return (
-    <div className="col-span-4">
+    <div className="col-span-4 mt-5 lg:mt-0">
       <motion.div
         variants={fadeIn("left")}
         initial="hidden"
@@ -115,8 +123,12 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
-            <Button disabled={form.formState.isSubmitting} type="submit">
-              {form.formState.isSubmitting ? (
+            <Button
+              disabled={isPending}
+              type="submit"
+              className="cursor-pointer"
+            >
+              {isPending ? (
                 <>
                   <Loader2 size={16} className="animate-spin" /> Sending...
                 </>

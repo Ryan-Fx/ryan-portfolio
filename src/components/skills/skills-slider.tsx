@@ -9,6 +9,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { InfiniteSlider } from "../motion-primitives/infinite-slider";
+import DrizzleLogo from "@/components/icons/drizzle-logo";
 
 const skillsDataFrontend = [
   {
@@ -64,6 +65,12 @@ const skillsDataBackend = [
     icon: <SiPostgresql className="size-12" />,
   },
   {
+    id: 9,
+    name: "Drizzle",
+    tag: ["All", "Back End"],
+    icon: <DrizzleLogo className="size-12" />,
+  },
+  {
     id: 11,
     name: "MySQL",
     tag: ["All", "Back End"],
@@ -79,7 +86,10 @@ export default function SkillsSlider() {
           ...skillsDataFrontend,
           ...skillsDataFrontend,
         ].map((skill, index) => (
-          <div key={index} className="flex flex-col items-center">
+          <div
+            key={index}
+            className="flex flex-col items-center justify-center"
+          >
             {skill.icon}
             <span className="mt-2 text-sm ">{skill.name}</span>
           </div>
@@ -93,7 +103,10 @@ export default function SkillsSlider() {
           ...skillsDataBackend,
           ...skillsDataBackend,
         ].map((skill, index) => (
-          <div key={index} className="flex justify-center items-center">
+          <div
+            key={index}
+            className="flex justify-center items-center font-semibold"
+          >
             {skill.icon}
             <span className="ml-2 text-sm">{skill.name}</span>
           </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+// @ts-ignore
 import "./globals.css";
 import ScrollProgress from "@/components/scroll-progress";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -7,6 +8,8 @@ import Header from "@/components/header/header";
 import Squares from "@/components/Squares/Squares";
 import { BackgroundSquares } from "@/components/bg-squares";
 import Footer from "@/components/footer/footer";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,23 +32,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <ClerkProvider>
+      <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
         >
-          <BackgroundSquares />
-          <ScrollProgress />
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster
+              position="bottom-right"
+              toastOptions={{ duration: 3000 }}
+            />
+            <BackgroundSquares />
+            <ScrollProgress />
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
