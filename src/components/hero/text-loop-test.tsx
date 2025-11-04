@@ -2,7 +2,7 @@ import { TextLoop } from "../motion-primitives/text-loop";
 
 export function TextLoopTest() {
   return (
-    <div className="inline-flex whitespace-pre-wrap font-mono text-sm lg:text-xl text-rose-500">
+    <div className=" whitespace-pre-wrap font-mono text-sm lg:text-xl hidden lg:block text-rose-500">
       I build and develop websites using{" "}
       <TextLoop
         className="overflow-y-clip"

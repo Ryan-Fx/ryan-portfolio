@@ -85,7 +85,7 @@ export default function Introduce() {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: false, amount: 0.5 }}
-          className="flex items-center justify-center md:justify-start space-x-4"
+          className="hidden md:flex justify-start space-x-4"
         >
           <Link href="https://github.com/Ryan-Fx" target="_blank">
             <FaGithub className="h-8 w-8 hover:scale-110 transition duration-300 hover:text-purple-500" />

@@ -1,16 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ProjectCard } from "./project-card";
-import { fadeIn } from "@/lib/variants";
-import { tr } from "zod/v4/locales";
 
-const projectsData = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  gitUrl: string;
+  previewUrl: string;
+}
+
+const projectsData: Project[] = [
   {
     id: 1,
     title: "Ecommerce Website (Ryan Store)",
     description:
-      "This full-stack application was built and developed using Next JS (React Framework), Tailwind CSS, Prisma and PostgreSQL.",
+      "Full-stack e-commerce built using Next.js, Tailwind CSS, Prisma, and PostgreSQL with modern responsive UI.",
     image: "/images/projects/store.jpg",
     gitUrl: "https://github.com/Ryan-Fx/ryan-e-commerce",
     previewUrl: "https://ryannn-store.vercel.app",
@@ -19,7 +26,7 @@ const projectsData = [
     id: 2,
     title: "Personal Portfolio Website",
     description:
-      "This full-stack application was built and developed using Next JS (React Framework), Tailwind CSS, Prisma and PostgreSQL. This portfolio uses responsive design so that its appearance will adjust to the user's screen size.",
+      "Responsive personal portfolio built using Next.js, Tailwind CSS, Shadcn UI, and Framer Motion for animations.",
     image: "/images/projects/portfolio.jpg",
     gitUrl: "https://github.com/Ryan-Fx/ryan-portfolio-nextjs",
     previewUrl: "https://ryann-devv.vercel.app",
@@ -28,7 +35,7 @@ const projectsData = [
     id: 3,
     title: "Interior Website",
     description:
-      "This website was built and developed using Next JS (React Framework), Tailwind CSS, Framer Motion, TypeScript etc. This website uses responsive design so that its appearance will adjust to the user's screen size.",
+      "Modern interior design website using Next.js, Tailwind CSS, Framer Motion, and TypeScript.",
     image: "/images/projects/interriorweb.jpg",
     gitUrl: "https://github.com/Ryan-Fx/interior-website",
     previewUrl: "https://ryanfx-interior-website.vercel.app",
@@ -37,20 +44,30 @@ const projectsData = [
     id: 4,
     title: "Admin Dashboard",
     description:
-      "This website was built and developed using Next JS (React Framework), Tailwind CSS, Framer Motion, TypeScript etc. This website uses responsive design so that its appearance will adjust to the user's screen size.",
+      "Responsive dashboard using Next.js, Tailwind CSS, and Framer Motion with animated charts and modern UI.",
     image: "/images/projects/dashboard.jpg",
     gitUrl: "https://github.com/Ryan-Fx/ryan-dashboard",
     previewUrl: "https://ryanfx-admin-dashboard.vercel.app",
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.8,
+      staggerChildren: 0.3,
       delayChildren: 0.2,
     },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -63,14 +80,16 @@ export function Projects() {
         </h2>
 
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          variants={fadeIn("up", 0.3)}
+          variants={containerVariants}
           initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.3 }}
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-8"
         >
           {projectsData.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <motion.div key={project.id} variants={cardVariants}>
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
         </motion.div>
       </div>
