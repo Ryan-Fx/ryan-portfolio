@@ -123,10 +123,9 @@ export default function Introduce() {
             className="hover:scale-110 transition duration-300 rounded-full shadow-lg"
           >
             <Link
-              href={
-                "https://docs.google.com/document/d/16IBKBDKwbmZY76pvDuqxJxskaTzdoeY5YHRjw9vxEaQ/edit?usp=sharing"
-              }
+              href="/Ryan_Frontend_CV.pdf"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Get Resume
               <IoDownloadOutline size={20} className="ml-2" />

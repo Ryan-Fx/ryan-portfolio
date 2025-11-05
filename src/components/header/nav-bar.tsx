@@ -7,6 +7,7 @@ import NavLinks from "./nav-links";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { IoIosMail } from "react-icons/io";
 
 export default function NavBar() {
   return (
@@ -33,7 +34,7 @@ export default function NavBar() {
           </div>
           <ModeToggle />
           <Button asChild variant="ghost">
-            <Link href="/message">Inbox!</Link>
+            <Link href="/message">📩</Link>
           </Button>
         </div>
       </div>

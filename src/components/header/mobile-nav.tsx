@@ -40,7 +40,7 @@ export default function MobileNav() {
       <div className="flex items-center space-x-2">
         <ModeToggle />
         <Button asChild variant="ghost">
-          <Link href="/message">Inbox!</Link>
+          <Link href="/message">📩</Link>
         </Button>
         <SignedIn>
           <UserButton />
