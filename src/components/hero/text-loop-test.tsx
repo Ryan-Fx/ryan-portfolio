@@ -2,7 +2,7 @@ import { TextLoop } from "../motion-primitives/text-loop";
 
 export function TextLoopTest() {
   return (
-    <div className=" whitespace-pre-wrap font-mono text-sm lg:text-xl hidden lg:block text-rose-500">
+    <div className=" whitespace-pre-wrap font-semibold font-mono tracking-wider text-sm lg:text-xl hidden lg:block text-sky-500">
       I build and develop websites using{" "}
       <TextLoop
         className="overflow-y-clip"
@@ -33,13 +33,13 @@ export function TextLoopTest() {
           },
         }}
       >
-        <span className="text-sky-500">TypeScript</span>
-        <span className="text-sky-500">Next.js</span>
+        <span className="text-pink-500">TypeScript</span>
+        <span className="text-teal-400">Next.js</span>
         {/* <span>TailwindCSS</span>
         <span>Framer Motion</span>
         <span>Shadcn UI</span>
         <span>Zustand</span> */}
-        <span className="text-sky-500">Laravel for API</span>
+        {/* <span className="text-sky-500">Laravel for API</span> */}
       </TextLoop>
     </div>
   );

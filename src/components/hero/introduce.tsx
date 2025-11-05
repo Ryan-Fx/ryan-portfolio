@@ -29,12 +29,12 @@ const inter = Inter({
 });
 
 const words =
-  "A web developer with a passion for creating engaging, entertaining user experiences and responsive web design.";
+  "Crafting smooth, responsive, and modern interfaces that just feel right.";
 
 export default function Introduce() {
   return (
     <div className="md:w-1/2 mx-auto w-full">
-      <div className="space-y-4 mb-6 text-center md:text-left">
+      <div className="space-y-4 lg:space-y-6 mb-6 text-center md:text-left">
         <h1 className="text-fuchsia-500 text-2xl md:text-3xl lg:text-4xl font-extrabold">
           <TypeAnimation
             preRenderFirstString={true}
@@ -74,11 +74,11 @@ export default function Introduce() {
           words={words}
           duration={0.5}
           className={cn(
-            "text-lg lg:text-3xl font-medium text-muted-foreground tracking-wider",
+            "text-lg lg:text-xl font-medium text-muted-foreground tracking-wider",
             inter.className
           )}
         />
-        ;
+
         <TextLoopTest />
         <motion.div
           variants={fadeIn("left", 0.4)}

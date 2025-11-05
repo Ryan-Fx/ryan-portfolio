@@ -68,28 +68,22 @@ export default function AboutText() {
         >
           {lang === "en" ? (
             <>
-              I'm a passionate web developer{" "}
-              <span className={cn("text-rose-400 text-xl", karla.className)}>
-                (still growing as a junior)
-              </span>{" "}
-              who loves building clean and modern web interfaces. I enjoy
-              learning new things, experimenting with designs, and trying to
-              enhance user interfaces to create a better user experience. Every
-              project I work on helps me learn, improve, and get closer to the
-              developer I want to be.
+              I’m a Front-End Web Developer passionate about crafting modern,
+              responsive, and high-performance interfaces. I love building
+              clean, component-based designs that focus on great UI and smooth
+              UX. I’m always learning, experimenting with Next.js projects, and
+              pushing myself to create better user experiences with every line
+              of code.
             </>
           ) : (
             <>
-              Saya adalah web developer yang bersemangat{" "}
-              <span className={cn("text-rose-400 text-xl", karla.className)}>
-                (masih berkembang sebagai junior)
-              </span>{" "}
-              yang suka membangun tampilan web yang bersih dan modern. Saya suka
-              mempelajari hal-hal baru, bereksperimen dengan desain, dan terus
-              berusaha membuat antarmuka yang lebih baik agar pengalaman
-              pengguna terasa lebih nyaman. Setiap proyek yang saya kerjakan
-              membantu saya belajar, berkembang, dan semakin dekat dengan
-              developer yang saya inginkan.
+              Saya seorang Front-End Web Developer yang suka bikin tampilan web
+              modern, responsif, dan berperforma tinggi. Saya senang ngerjain
+              desain yang bersih dan berbasis komponen, dengan fokus ke tampilan
+              yang rapi dan pengalaman pengguna yang terasa natural. Suka
+              belajar dan bereksperimen lewat berbagai proyek Next.js, sambil
+              terus nyari cara buat bikin pengalaman web yang lebih baik di
+              setiap baris kode.
             </>
           )}
         </motion.p>
