@@ -6,7 +6,7 @@ import HeroSpline from "./hero-spline";
 
 export default function Hero() {
   return (
-    <section id="home" className="scroll-mt-100">
+    <section id="home" className="mt-44 scroll-mt-44">
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}

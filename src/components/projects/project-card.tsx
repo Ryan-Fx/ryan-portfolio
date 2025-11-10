@@ -31,7 +31,7 @@ export function ProjectCard({ project }: { project: ProjectCardProps }) {
               width={500}
               height={300}
               alt={title}
-              className="rounded-lg w-full object-cover aspect-video transition-transform duration-700 group-hover:scale-125"
+              className="rounded-lg w-full object-cover aspect-auto transition-transform duration-700 group-hover:scale-125"
             />
 
             {/* Overlay redup saat hover */}
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: { project: ProjectCardProps }) {
             <h3 className="text-xl font-semibold text-cyan-300 mb-2">
               {title}
             </h3>
-            <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">
+            <p className="text-sm text-gray-300 leading-4 line-clamp-3">
               {description}
             </p>
           </div>

@@ -2,11 +2,16 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Inter, Karla } from "next/font/google";
+import { Inter, Karla, Roboto } from "next/font/google";
 import { Button } from "../ui/button";
 import { fadeIn } from "@/lib/variants";
 
 const karla = Karla({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
+const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
@@ -48,7 +53,11 @@ export default function AboutText() {
     >
       {/* Tombol toggle */}
       <div className="flex justify-end mb-3">
-        <Button onClick={toggleLang} variant="outline">
+        <Button
+          onClick={toggleLang}
+          variant="outline"
+          className="cursor-pointer"
+        >
           {lang === "en" ? "🇮🇩 Bahasa Indonesia" : "us English"}
         </Button>
       </div>
@@ -62,8 +71,8 @@ export default function AboutText() {
           exit={{ opacity: 0, scale: 0.97, y: -10 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className={cn(
-            "text-lg md:text-xl text-muted-foreground tracking-wider leading-relaxed",
-            inter.className
+            "text-lg md:text-xl text-muted-foreground font-semibold tracking-wider leading-relaxed",
+            roboto.className
           )}
         >
           {lang === "en" ? (
@@ -77,12 +86,12 @@ export default function AboutText() {
             </>
           ) : (
             <>
-              Saya seorang Front-End Web Developer yang suka bikin tampilan web
-              modern, responsif, dan berperforma tinggi. Saya senang ngerjain
-              desain yang bersih dan berbasis komponen, dengan fokus ke tampilan
-              yang rapi dan pengalaman pengguna yang terasa natural. Suka
-              belajar dan bereksperimen lewat berbagai proyek Next.js, sambil
-              terus nyari cara buat bikin pengalaman web yang lebih baik di
+              Seorang Front-End Web Developer yang suka ngebuild tampilan web
+              modern, responsif, dan berperforma tinggi. Suka mengerjakan desain
+              yang bersih dan berbasis komponen, dengan fokus ke tampilan yang
+              rapi dan pengalaman pengguna yang terasa natural. Suka belajar dan
+              bereksperimen lewat berbagai proyek Next.js, sambil ngepush diri
+              sendiri untuk bisa membuat pengalaman web yang lebih baik di
               setiap baris kode.
             </>
           )}

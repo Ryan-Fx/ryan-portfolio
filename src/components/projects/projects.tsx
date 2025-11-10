@@ -15,6 +15,15 @@ interface Project {
 const projectsData: Project[] = [
   {
     id: 1,
+    title: "Movie Explorer",
+    description:
+      "Full-stack e-commerce built using Next.js, Tailwind CSS, Prisma, and PostgreSQL with modern responsive UI.",
+    image: "/images/projects/ryanwatch.jpg",
+    gitUrl: " https://github.com/Ryan-Fx/ryan-movie-explorer",
+    previewUrl: " https://ryanwatch.vercel.app",
+  },
+  {
+    id: 2,
     title: "Ecommerce Website (Ryan Store)",
     description:
       "Full-stack e-commerce built using Next.js, Tailwind CSS, Prisma, and PostgreSQL with modern responsive UI.",
@@ -23,7 +32,7 @@ const projectsData: Project[] = [
     previewUrl: "https://ryannn-store.vercel.app",
   },
   {
-    id: 2,
+    id: 3,
     title: "Personal Portfolio Website",
     description:
       "Responsive personal portfolio built using Next.js, Tailwind CSS, Shadcn UI, and Framer Motion for animations.",
@@ -32,7 +41,7 @@ const projectsData: Project[] = [
     previewUrl: "https://ryann-devv.vercel.app",
   },
   {
-    id: 3,
+    id: 4,
     title: "Interior Website",
     description:
       "Modern interior design website using Next.js, Tailwind CSS, Framer Motion, and TypeScript.",
@@ -41,7 +50,7 @@ const projectsData: Project[] = [
     previewUrl: "https://ryanfx-interior-website.vercel.app",
   },
   {
-    id: 4,
+    id: 5,
     title: "Admin Dashboard",
     description:
       "Responsive dashboard using Next.js, Tailwind CSS, and Framer Motion with animated charts and modern UI.",
@@ -62,21 +71,21 @@ const containerVariants: Variants = {
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  hidden: { opacity: 0, y: 40 },
   show: {
     opacity: 1,
     y: 0,
-    scale: 1,
+
     transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
 export function Projects() {
   return (
-    <section id="projects" className="scroll-mt-36 mt-32">
+    <section id="projects" className="scroll-mt-32">
       <div>
         <h2 className="text-4xl font-extrabold mb-12 text-center tracking-wide">
-          My Futuristic Projects
+          Projects
         </h2>
 
         <motion.div

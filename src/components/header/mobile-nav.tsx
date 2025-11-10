@@ -1,66 +1,65 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "../ui/sheet";
-import { Button } from "../ui/button";
-import { FaAlignJustify } from "react-icons/fa";
-import { ModeToggle } from "../mode-toggle";
-import MobileNavLinks from "./mobile-nav-links";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-export default function MobileNav() {
-  const [isScrolled, setIsScrolled] = useState(false);
+export default function MobileNavbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Kalau user scroll > 20px, aktifkan efek blur
-      setIsScrolled(window.scrollY > 20);
-    };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
+    { href: "/contact", label: "Contact" },
+  ];
 
   return (
-    <div
-      className={`md:hidden sticky top-0 left-0 w-full z-50 flex justify-between px-5 pt-4 pb-3 transition-all duration-500 ${
-        isScrolled
-          ? "backdrop-blur-md bg-white/50 dark:bg-gray-900/60 shadow-xl"
-          : "bg-transparent"
-      }`}
-    >
-      {/* Bagian kiri */}
-      <div className="flex items-center space-x-2">
-        <ModeToggle />
-        <Button asChild variant="ghost">
-          <Link href="/message">📩</Link>
-        </Button>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
+    <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
+      {/* Bagian atas: logo + tombol menu */}
+      <div className="flex items-center justify-between px-4 py-3">
+        <Link href="/" className="text-xl font-semibold">
+          Ryan<span className="text-blue-500">Dev</span>
+        </Link>
+
+        <button
+          onClick={toggleMenu}
+          className="p-2 text-gray-700 rounded-md hover:bg-gray-100 transition"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      {/* Tombol menu */}
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <FaAlignJustify size={20} />
-          </Button>
-        </SheetTrigger>
-        <SheetContent className="w-[300px]" side="left">
-          <SheetHeader>
-            <SheetTitle></SheetTitle>
-          </SheetHeader>
-          <MobileNavLinks />
-        </SheetContent>
-      </Sheet>
-    </div>
+      {/* Menu muncul ketika tombol ditekan */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden border-t border-gray-200 bg-white"
+          >
+            <ul className="flex flex-col py-2">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 }

@@ -1,43 +1,66 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { ModeToggle } from "../mode-toggle";
-import NavLinks from "./nav-links";
-import { SignedIn, UserButton } from "@clerk/nextjs";
-import { Button } from "../ui/button";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useMotionValueEvent,
+} from "framer-motion";
 import Link from "next/link";
-import { IoIosMail } from "react-icons/io";
+import { useState } from "react";
+import NavLinks from "./nav-links";
+import { ModeToggle } from "../mode-toggle";
+import { GiBatMask } from "react-icons/gi";
 
-export default function NavBar() {
+export default function AnimatedNavbar() {
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
+
+  // === Tahapan lebar (2 tahap) ===
+  const baseWidth = useTransform(scrollY, [0, 500, 600], ["70%", "60%", "40%"]);
+
+  // === Tinggi navbar ===
+  const baseHeight = useTransform(scrollY, [0, 400], ["4rem", "3.5rem"]);
+
+  // === Spring untuk efek kelenturan halus ===
+  const springWidth = useSpring(baseWidth, {
+    stiffness: 120, // semakin tinggi = lebih cepat responsnya
+    damping: 18, // semakin tinggi = lebih sedikit goyang
+    mass: 0.4, // pengaruh inertia
+  });
+
+  const springHeight = useSpring(baseHeight, {
+    stiffness: 160,
+    damping: 20,
+    mass: 0.4,
+  });
+
   return (
-    <div className="pt-10 relative hidden md:flex">
-      <div className="w-full flex justify-center">
-        <div className="">
-          <motion.div
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="hidden md:flex  z-10 bg-opacity-60 backdrop-blur-md bg-white/30 dark:bg-primary d rounded-full shadow-lg shadow-slate-500/30 py-2 px-5"
-          >
-            <NavLinks />
-          </motion.div>
+    <div className="w-full flex justify-center z-50 pointer-events-none">
+      <motion.nav
+        style={{
+          width: springWidth,
+          height: springHeight,
+        }}
+        className={`pointer-events-auto bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border border-gray-200 dark:border-gray-800 rounded-full mt-4 flex items-center justify-between px-6 ${
+          isScrolled ? "shadow-xl" : "shadow-lg"
+        }`}
+      >
+        <div>
+          <GiBatMask className="size-7 text-sky-500 dark:text-red-400" />
         </div>
-      </div>
-      {/* dark mode */}
-      <div className="hidden md:flex pr-8 absolute top-6 right-0">
-        <div className="flex space-x-4">
-          <div className="flex items-center">
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </div>
-          <ModeToggle />
-          <Button asChild variant="ghost">
-            <Link href="/message">📩</Link>
-          </Button>
+
+        <div className="gap-6">
+          <NavLinks />
         </div>
-      </div>
+
+        <ModeToggle />
+      </motion.nav>
     </div>
   );
 }

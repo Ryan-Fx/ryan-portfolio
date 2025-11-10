@@ -22,7 +22,7 @@ export default function NavLinks() {
           href={link.path}
           onClick={() => setActive(link.name)}
           className={cn(
-            "text-gray-500 hover:text-fuchsia-500 md:hover:text-fuchsia-500 dark:hover:md:text-sky-500 py-2 px-4 rounded-full font-semibold transition duration-150 relative",
+            "text-gray-600 dark:text-gray-400 hover:text-fuchsia-500 md:hover:text-fuchsia-500 dark:hover:md:text-sky-500 py-2 px-4 rounded-full font-semibold transition duration-150 relative",
             {
               "md:text-fuchsia-500 dark:md:text-sky-500 text-fuchsia-500":
                 active === link.name,
