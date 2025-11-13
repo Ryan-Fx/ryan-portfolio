@@ -17,7 +17,7 @@ const projectsData: Project[] = [
     id: 1,
     title: "Movie Explorer",
     description:
-      "Full-stack e-commerce built using Next.js, Tailwind CSS, Prisma, and PostgreSQL with modern responsive UI.",
+      "Movie search app built with Next.js, Tailwind CSS, responsive UI design and TMDB API for exploring films easily.",
     image: "/images/projects/ryanwatch.jpg",
     gitUrl: " https://github.com/Ryan-Fx/ryan-movie-explorer",
     previewUrl: " https://ryanwatch.vercel.app",
